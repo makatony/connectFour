@@ -32,19 +32,22 @@ function setup() {
       let tile = Tile.getTileByPos(xpos, ypos);
       if (tile != undefined) {
         success = tile.click();
-        if (success) {
+        if (success == true) {
           CURR_PLAYER = ((CURR_PLAYER + 1) % 2);
         }
         else console.log('cannot');
       }
     }
   });
+
+  fr = createP();
 }
 
 function draw() {
   for (let i = 0; i < tiles.length; i++) {
     tiles[i].render();
   }
+  fr.html(frameRate());
 }
 
 function cartesian2pos(x, y) {

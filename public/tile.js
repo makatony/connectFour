@@ -11,7 +11,6 @@ class Tile {
     fill(255);
     rect(x, y, RES, RES);
     if (this.piece != 2) {
-      let [x, y] = pos2cartesian(this.xpos, this.ypos);
       fill(COLOR[this.piece]);
       ellipse(x + RES / 2, y + RES / 2, RES * 0.8, RES * 0.8);
     }
