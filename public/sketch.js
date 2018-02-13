@@ -34,8 +34,7 @@ function setup() {
         success = tile.click();
         if (success == true) {
           CURR_PLAYER = ((CURR_PLAYER + 1) % 2);
-        }
-        else console.log('cannot');
+        } else console.log('cannot');
       }
     }
   });
@@ -74,26 +73,37 @@ var isDoubleClick = false;
 var isMouseDrag = false;
 mouseListeners = [];
 var mousePressed = function () {
+  let args = arguments;
   this.isDoubleClick = (floor(millis() - doubleClickMS) <= 500 ? true : false); //for some reason this.isDoubleClick is passed to the functions without problems
   doubleClickMS = millis(); //resets doubleclick timer
 
-  mouseEventCallHandlers('mousePressed', arguments);
+  mouseEventCallHandlers('mousePressed', args);
   this.isMouseDrag = false;
 };
 var mouseClicked = function () {
-  mouseEventCallHandlers('mouseClicked', arguments);
+  let args = arguments;
+  mouseEventCallHandlers('mouseClicked', args);
   this.isMouseDrag = false;
 };
 var mouseReleased = function () {
-  mouseEventCallHandlers('mouseReleased', arguments);
+  let args = arguments;
+  mouseEventCallHandlers('mouseReleased', args);
   this.isMouseDrag = false;
 };
 var mouseDragged = function () {
+  let args = arguments;
   this.isMouseDrag = true;
-  mouseEventCallHandlers('mouseDragged', arguments);
+  mouseEventCallHandlers('mouseDragged', args);
 };
-var mouseEventCallHandlers = function (type, arguments) {
+var mouseEventCallHandlers = function (type, args) {
   mouseListeners.forEach(function (elt) {
-    if (elt.type == type) elt.fn.apply(this, arguments);
+    if (elt.type == type) elt.fn.apply(this, args);
   });
 };
+
+
+
+function sum(a,b) {
+  return a + b;
+}
+module.exports = sum;
