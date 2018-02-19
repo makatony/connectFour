@@ -107,7 +107,12 @@ var mouseEventCallHandlers = function (type, args) {
 // #### JEST TEST ####
 // ############################
 
-function sum(a,b) {
+function sum(a, b) {
   return a + b;
 }
-module.exports = sum; // exports the sum function for the jest test. this node module exports the sum function
+
+function changeObj(a) {
+  a.thirdProperty = 'world';
+  return a;
+}
+module.exports = {'sum':sum, 'changeObj':changeObj}; // exports the sum function for the jest test. this node module exports the sum function
